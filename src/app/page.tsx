@@ -54,14 +54,14 @@ export default async function Home() {
 
       {/* MAIN VISUAL: 全体コンセプト */}
       <section className="bg-black text-white py-24 px-5 text-center">
-        <h2 className="text-6xl md:text-8xl font-black mb-8 italic tracking-tighter">WE ARE Appare!</h2>
+        <h2 className="text-6xl md:text-8xl font-black mb-8 italic tracking-tighter">Appare!</h2>
         <p className="max-w-2xl mx-auto text-xl font-bold leading-relaxed">
-          世界を明るく照らす、最強の7色の光。<br />
-          この場所は、Appare!の魅力をアーカイブし、ファンと共に歩む非公式スペースです。
+          世界を明るく照らす、9色の光。<br />
+          このサイトは、Appare!の魅力をアーカイブし、ファンと共に歩む非公式スペースです。
         </p>
       </section>
 
-      {/* SNS LINKS: 公式連携 */}
+      {/* SNS LINKS: 式連携 */}
       <section className="py-12 border-b-4 border-black bg-yellow-400">
         <div className="max-w-5xl mx-auto flex flex-wrap justify-center gap-8 md:gap-16 font-black text-2xl italic uppercase">
           <a href="https://x.com/official_appare" target="_blank" className="hover:scale-110 transition-transform">X</a>
