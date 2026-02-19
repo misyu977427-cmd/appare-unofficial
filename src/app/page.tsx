@@ -1,7 +1,8 @@
 import { client } from "@/lib/microcms";
 import Image from "next/image";
+import Link from "next/link"; // ✅ リンク機能を追加
 
-// 型定義：データの構造を明確にする
+// 型定義
 type Member = {
   id: string;
   name: string;
@@ -19,22 +20,20 @@ type News = {
 };
 
 export default async function Home() {
-  // 取得時に「queries」を追加して並び順を指定
+  // ✅ データの並列取得（共同開発者の記事も自動反映）
   const [memberData, newsData] = await Promise.all([
     client.getList<Member>({ 
       endpoint: "members",
-      queries: { orders: '-createdAt' } // 👈 これを追加（作成日の新しい順）
+      queries: { orders: '-createdAt' } 
     }),
     client.getList<News>({ 
       endpoint: "news",
-      queries: { orders: '-date' } // 👈 ニュースも日付の新しい順にしておくと便利です
+      queries: { orders: '-date' } 
     }),
   ]);
 
   const members = memberData.contents;
   const news = newsData.contents;
-  
-  // ...以下、return部分は変更なし
 
   return (
     <main className="min-h-screen bg-white font-sans text-gray-900">
@@ -52,18 +51,23 @@ export default async function Home() {
         </div>
       </header>
 
-      {/* MAIN VISUAL: 全体コンセプト */}
+      {/* MAIN VISUAL: 9色の光 & 集合写真枠 */}
       <section className="bg-black text-white py-24 px-5 text-center">
-        <h2 className="text-6xl md:text-8xl font-black mb-8 italic tracking-tighter">Appare!</h2>
-        <p className="max-w-2xl mx-auto text-xl font-bold leading-relaxed">
-          世界を明るく照らす、9色の光。<br />
+        {/* ⚠️ ここに将来、メンバー全員の集合写真を Image タグで載せます */}
+        <div className="max-w-4xl mx-auto mb-10 border-4 border-white aspect-video flex items-center justify-center bg-gray-900 overflow-hidden relative">
+           <p className="text-gray-500 italic">ここに集合写真を掲載予定</p>
+           {/* 写真がある場合は以下をアンコメントして使用 */}
+           {/* <Image src="/all-members.jpg" alt="Appare! 全員" fill className="object-cover" /> */}
+        </div>
+        <h2 className="text-4xl md:text-6xl font-black mb-8 italic tracking-tighter">世界を明るく照らす、9色の光。</h2>
+        <p className="max-w-2xl mx-auto text-xl font-bold leading-relaxed opacity-80">
           このサイトは、Appare!の魅力をアーカイブし、ファンと共に歩む非公式スペースです。
         </p>
       </section>
 
-      {/* SNS LINKS: 式連携 */}
+      {/* SNS LINKS: 公式連携 */}
       <section className="py-12 border-b-4 border-black bg-yellow-400">
-        <div className="max-w-5xl mx-auto flex flex-wrap justify-center gap-8 md:gap-16 font-black text-2xl italic uppercase">
+        <div className="max-w-5xl mx-auto flex flex-wrap justify-center gap-8 md:gap-16 font-black text-2xl italic uppercase text-black">
           <a href="https://x.com/official_appare" target="_blank" className="hover:scale-110 transition-transform">X</a>
           <a href="https://www.youtube.com/@AppareOfficial" target="_blank" className="hover:scale-110 transition-transform">YouTube</a>
           <a href="https://www.tiktok.com/@appare_official" target="_blank" className="hover:scale-110 transition-transform">TikTok</a>
@@ -71,34 +75,36 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* MEMBERS: メンバー一覧（設計図通り上部に配置） */}
+      {/* MEMBERS: メンバー一覧（詳細ページへリンク） */}
       <section id="members" className="max-w-7xl mx-auto py-24 px-5">
-        <h2 className="text-5xl font-black mb-16 border-l-8 border-black pl-6 uppercase tracking-tighter">Members</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
+        <h2 className="text-5xl font-black mb-16 border-l-8 border-black pl-6 uppercase tracking-tighter text-black">Members</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 text-black">
           {members.map((member) => (
-            <div 
-              key={member.id} 
-              className="border-[6px] border-black p-10 shadow-[15px_15px_0px_0px_rgba(0,0,0,1)] flex flex-col items-center text-center bg-white hover:translate-x-1 hover:-translate-y-1 transition-all"
-              style={{ borderColor: member.color }}
-            >
-              <div className="w-40 h-40 rounded-full mb-8 border-4 border-black overflow-hidden relative bg-gray-100 shadow-inner">
-                {member.image ? (
-                  <Image src={member.image.url} alt={member.name} fill className="object-cover" />
-                ) : (
-                  <div className="w-full h-full" style={{ backgroundColor: member.color }}></div>
-                )}
+            <Link href={`/members/${member.id}`} key={member.id} className="block group">
+              <div 
+                className="border-[6px] border-black p-10 shadow-[15px_15px_0px_0px_rgba(0,0,0,1)] flex flex-col items-center text-center bg-white group-hover:translate-x-1 group-hover:-translate-y-1 transition-all"
+                style={{ borderColor: member.color }}
+              >
+                <div className="w-40 h-40 rounded-full mb-8 border-4 border-black overflow-hidden relative bg-gray-100 shadow-inner">
+                  {member.image ? (
+                    <Image src={member.image.url} alt={member.name} fill className="object-cover" />
+                  ) : (
+                    <div className="w-full h-full" style={{ backgroundColor: member.color }}></div>
+                  )}
+                </div>
+                <h3 className="text-4xl font-black mb-2">{member.name}</h3>
+                <p className="text-sm font-bold text-gray-400 mb-6 tracking-[0.3em] uppercase">{member.name_en}</p>
+                <div className="h-1.5 w-12 bg-black mb-6"></div>
+                <p className="text-md font-bold italic text-gray-700 leading-relaxed">“{member.catchphrase}”</p>
+                <p className="mt-4 text-xs font-black uppercase underline tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">View Profile</p>
               </div>
-              <h3 className="text-4xl font-black mb-2">{member.name}</h3>
-              <p className="text-sm font-bold text-gray-400 mb-6 tracking-[0.3em] uppercase">{member.name_en}</p>
-              <div className="h-1.5 w-12 bg-black mb-6"></div>
-              <p className="text-md font-bold italic text-gray-700 leading-relaxed">“{member.catchphrase}”</p>
-            </div>
+            </Link>
           ))}
         </div>
       </section>
 
-      {/* NEWS: 最新記事（microCMSから動的取得） */}
-      <section id="news" className="bg-gray-100 py-24 px-5 border-y-[6px] border-black">
+      {/* NEWS: 最新記事（共同開発者の更新を反映） */}
+      <section id="news" className="bg-gray-100 py-24 px-5 border-y-[6px] border-black text-black">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-5xl font-black mb-16 border-l-8 border-black pl-6 uppercase tracking-tighter">Latest News</h2>
           <div className="space-y-8">
@@ -119,7 +125,7 @@ export default async function Home() {
       </section>
 
       {/* FOOTER: ご注意・著作権 */}
-      <footer className="py-20 px-5 bg-white border-t-[10px] border-black text-xs font-bold leading-relaxed">
+      <footer className="py-20 px-5 bg-white border-t-[10px] border-black text-xs font-bold leading-relaxed text-black">
         <div className="max-w-4xl mx-auto space-y-10">
           <div className="grid md:grid-cols-2 gap-10">
             <div>
@@ -132,8 +138,8 @@ export default async function Home() {
             </div>
           </div>
           <div className="pt-10 border-t-2 border-gray-200 text-center">
-            <p className="mb-4 italic text-gray-500 uppercase tracking-widest">This is an unofficial fan site. 本サイトは有志による非公式ファンサイトです。</p>
-            <p className="text-2xl font-black tracking-tighter underline decoration-4">© 2026 Appare! UNOFFICIAL</p>
+            <p className="mb-4 italic text-gray-500 uppercase tracking-widest text-black">This is an unofficial fan site. 本サイトは有志による非公式ファンサイトです。</p>
+            <p className="text-2xl font-black tracking-tighter underline decoration-4 text-black">© 2026 Appare! UNOFFICIAL</p>
           </div>
         </div>
       </footer>
