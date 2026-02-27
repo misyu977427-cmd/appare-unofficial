@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 type Member = { id: string; name: string; color: string; };
-type News = { id: string; title: string; publishedAt: string; }; // ✅ publishedAtに統一
+type News = { id: string; title: string; publishedAt: string; };
 
 export default async function Home() {
   const [memberData, newsData] = await Promise.all([
@@ -17,7 +17,7 @@ export default async function Home() {
   ]);
 
   return (
-    <main className="min-h-screen bg-white text-black font-sans">
+    <main className="min-h-screen bg-white font-sans text-gray-900">
       <header className="py-6 px-5 border-b-8 border-black sticky top-0 bg-white z-50">
         <div className="max-w-6xl mx-auto flex justify-between items-center text-black">
           <h1 className="text-3xl font-black italic tracking-tighter">Appare! UNOFFICIAL</h1>
@@ -29,9 +29,9 @@ export default async function Home() {
         </div>
       </header>
 
-      {/* ✅ 集合写真を表示するセクション */}
+      {/* ✅ ここが写真を表示する部分：テキストは完全に消しました */}
       <section className="bg-black text-white py-24 px-5 text-center">
-        <div className="max-w-4xl mx-auto mb-10 border-4 border-white aspect-video relative overflow-hidden bg-gray-900">
+        <div className="max-w-4xl mx-auto mb-10 border-4 border-white aspect-video relative overflow-hidden bg-gray-900 shadow-[10px_10px_0px_0px_rgba(255,255,255,0.2)]">
           <Image 
             src="/all-members.jpg" 
             alt="Appare! 全員集合写真" 
@@ -40,24 +40,34 @@ export default async function Home() {
             priority 
           />
         </div>
-        <h2 className="text-4xl md:text-6xl font-black mb-8 italic tracking-tighter">世界を明るく照らす、9色の光。</h2>
+        <h2 className="text-4xl md:text-6xl font-black mb-8 italic tracking-tighter text-white">世界を明るく照らす、9色の光。</h2>
         <p className="max-w-2xl mx-auto text-xl font-bold opacity-80 leading-relaxed text-white">
           このサイトは、Appare!の魅力をアーカイブし、ファンと共に歩む非公式スペースです。
         </p>
       </section>
 
-      {/* ✅ メンバーセクション（閉じタグエラーを修正済み） */}
+      {/* SNS LINKS */}
+      <section className="py-12 border-b-4 border-black bg-yellow-400">
+        <div className="max-w-5xl mx-auto flex flex-wrap justify-center gap-8 md:gap-16 font-black text-2xl italic uppercase text-black">
+          <a href="https://x.com/official_appare" target="_blank" rel="noopener noreferrer">X</a>
+          <a href="https://www.youtube.com/@AppareOfficial" target="_blank" rel="noopener noreferrer">YouTube</a>
+        </div>
+      </section>
+
+      {/* MEMBERS */}
       <section id="members" className="max-w-7xl mx-auto py-24 px-5 text-black">
         <h2 className="text-5xl font-black mb-16 border-l-8 border-black pl-6 uppercase tracking-tighter">Members</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <Link href="/members" className="group relative block overflow-hidden border-[6px] border-black bg-black p-12 shadow-[15px_15px_0px_0px_rgba(255,255,0,1)] transition-all hover:translate-x-1 hover:-translate-y-1">
-            <h3 className="text-5xl font-black italic text-white tracking-tighter">VIEW ALL MEMBERS</h3>
-            <p className="mt-4 text-yellow-400 font-bold uppercase tracking-widest">全メンバーを見る →</p>
+            <div className="relative z-10">
+              <h3 className="text-5xl font-black italic text-white tracking-tighter">VIEW ALL MEMBERS</h3>
+              <p className="mt-4 text-yellow-400 font-bold uppercase tracking-widest">全メンバーを見る →</p>
+            </div>
           </Link>
         </div>
       </section>
 
-      {/* ✅ ニュースセクション（最新3件） */}
+      {/* NEWS */}
       <section id="news" className="bg-gray-100 py-24 px-5 border-y-[6px] border-black text-black">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-5xl font-black mb-16 border-l-8 border-black pl-6 uppercase tracking-tighter">Latest News</h2>
