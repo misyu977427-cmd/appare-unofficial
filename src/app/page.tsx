@@ -22,7 +22,6 @@ type News = {
 };
 
 export default async function Home() {
-  // ✅ 2. データの並列取得（limit: 3 を追加して最新3件に絞る）
   const [memberData, newsData] = await Promise.all([
     client.getList<Member>({ 
       endpoint: "members",
@@ -84,10 +83,6 @@ export default async function Home() {
               <p className="mt-4 text-yellow-400 font-bold uppercase tracking-widest">全メンバーを見る →</p>
             </div>
           </Link>
-          <div className="grid grid-cols-2 gap-4">
-            <Link href="/members?tag=既存メンバー" className="border-4 border-black p-6 flex items-center justify-center font-black text-xl hover:bg-black hover:text-white transition-colors text-black">#既存メンバー</Link>
-            <Link href="/members?tag=新メンバー" className="border-4 border-black p-6 flex items-center justify-center font-black text-xl hover:bg-black hover:text-white transition-colors text-black">#新メンバー</Link>
-          </div>
         </div>
       </section>
 
