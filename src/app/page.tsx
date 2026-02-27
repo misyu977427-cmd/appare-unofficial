@@ -33,7 +33,7 @@ export default async function Home() {
       <section className="bg-black text-white py-24 px-5 text-center">
         <div className="max-w-4xl mx-auto mb-10 border-4 border-white aspect-video relative overflow-hidden bg-gray-900 shadow-[10px_10px_0px_0px_rgba(255,255,255,0.2)]">
           <Image 
-            src="/all-members.jpg" 
+            src="all-members.jpg" 
             alt="Appare! 全員集合写真" 
             fill 
             className="object-cover"
