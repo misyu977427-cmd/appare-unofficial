@@ -22,9 +22,6 @@ export default async function Home() {
       {/* HEADER: 「概要」リンクを追加 */}
       <header style={{ padding: '24px', borderBottom: '8px solid black', display: 'flex', justifyContent: 'space-between', alignItems: 'center', backgroundColor: 'white', position: 'sticky', top: 0, zIndex: 50 }}>
         <h1 style={{ fontSize: '1.8rem', fontWeight: '900', fontStyle: 'italic', margin: 0, letterSpacing: '-2px' }}>Appare! UNOFFICIAL</h1>
-        <nav>
-          <a href="#about" style={{ fontWeight: '900', textDecoration: 'none', color: 'black', fontSize: '0.9rem', border: '2px solid black', padding: '5px 10px' }}>当サイトの概要</a>
-        </nav>
       </header>
 
       {/* MAIN VISUAL */}
