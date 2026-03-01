@@ -1,31 +1,26 @@
 import { client } from "@/lib/microcms";
-import Image from "next/image";
 import Link from "next/link";
 
-export const revalidate = 0;
-
-export default async function MembersListPage() {
-  const data = await client.getList({ endpoint: "members", queries: { orders: '-createdAt' } });
-  const members = data.contents;
+export default async function MemberDetailPage({ params }: { params: { id: string } }) {
+  // ✅ 修正ポイント：特定のIDのデータだけを取得する
+  const member = await client.get({ endpoint: "members", contentId: params.id });
 
   return (
-    <main className="min-h-screen bg-white p-10 text-black">
-      <Link href="/" className="text-sm font-black underline mb-12 block uppercase tracking-widest">← Back to Top</Link>
-      <h1 className="text-7xl font-black italic mb-20 border-b-[10px] border-black pb-6 uppercase tracking-tighter">Member List</h1>
-      
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
-        {members.map((member: any) => (
-          <Link href={`/members/${member.id}`} key={member.id} target="_blank" className="block group">
-            <div className="border-[6px] border-black p-10 shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] flex flex-col items-center text-center bg-white group-hover:bg-gray-50 transition-all" style={{ borderColor: member.color }}>
-              <div className="w-40 h-40 rounded-full mb-8 border-4 border-black overflow-hidden relative shadow-inner">
-                {member.image && <Image src={member.image.url} alt={member.name} fill className="object-cover" />}
-              </div>
-              <h3 className="text-4xl font-black mb-2">{member.name}</h3>
-              <p className="text-sm font-bold text-gray-400 mb-6 uppercase tracking-widest">{member.name_en}</p>
-              <p className="text-md font-bold italic">“{member.catchphrase}”</p>
-            </div>
-          </Link>
-        ))}
+    <main style={{ backgroundColor: 'white', color: 'black', minHeight: '100vh', padding: '40px 20px', fontFamily: 'sans-serif' }}>
+      <Link href="/members" style={{ color: 'black', fontWeight: 'bold', textDecoration: 'underline', display: 'block', marginBottom: '40px' }}>
+        ← BACK TO LIST
+      </Link>
+      <div style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'center' }}>
+        <div style={{ border: '8px solid black', backgroundColor: '#eee', marginBottom: '40px' }}>
+          {member.image && <img src={member.image.url} alt={member.name} style={{ width: '100%', height: 'auto', display: 'block' }} />}
+        </div>
+        <h1 style={{ fontSize: '4rem', fontWeight: '900', fontStyle: 'italic', margin: '0 0 10px 0' }}>{member.name}</h1>
+        <p style={{ display: 'inline-block', backgroundColor: 'black', color: 'white', padding: '5px 20px', fontWeight: '900', marginBottom: '40px' }}>
+          COLOR: {member.color}
+        </p>
+        <div style={{ textAlign: 'left', border: '4px solid black', padding: '30px', fontWeight: 'bold', lineHeight: '1.8' }}>
+          <p style={{ whiteSpace: 'pre-wrap', margin: 0 }}>{member.introduction || "自己紹介文が未設定です。"}</p>
+        </div>
       </div>
     </main>
   );
