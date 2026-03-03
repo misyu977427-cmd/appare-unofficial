@@ -5,17 +5,21 @@ export default async function NewsDetailPage({ params }: { params: { id: string 
   const item = await client.get({ endpoint: "news", contentId: params.id });
 
   return (
-    <main className="min-h-screen bg-white p-10 text-black font-bold">
-      <Link href="/" className="text-sm underline mb-16 block">← BACK TO TOP</Link>
-      <article className="max-w-4xl mx-auto">
-        <p className="text-gray-500 mb-4">{new Date(item.date || item.createdAt).toLocaleDateString()}</p>
-        <h1 className="text-6xl font-black mb-12 italic border-b-8 border-black pb-6">{item.title}</h1>
-        {/* microCMSのリッチエディタの内容を表示 */}
+    <main style={{ backgroundColor: 'white', color: 'black', minHeight: '100vh', padding: '40px 20px', fontFamily: 'sans-serif' }}>
+      <div style={{ maxWidth: '800px', margin: '0 auto' }}>
+        <Link href="/" style={{ color: 'black', fontWeight: 'bold', textDecoration: 'underline', display: 'block', marginBottom: '40px' }}>← BACK TO HOME</Link>
+        <p style={{ color: '#6b7280', fontWeight: '900', marginBottom: '10px' }}>
+          {new Date(item.publishedAt).toLocaleDateString('ja-JP').replace(/\//g, '.')}
+        </p>
+        <h1 style={{ fontSize: '2.5rem', fontWeight: '900', fontStyle: 'italic', borderBottom: '8px solid black', paddingBottom: '20px', marginBottom: '40px', textTransform: 'uppercase' }}>
+          {item.title}
+        </h1>
+        {/* microCMSのリッチエディタ内容を表示 */}
         <div 
-          className="prose prose-xl max-w-none leading-loose" 
+          style={{ lineHeight: '1.8', fontSize: '1.1rem', fontWeight: 'bold' }}
           dangerouslySetInnerHTML={{ __html: item.content || item.body }} 
         />
-      </article>
+      </div>
     </main>
   );
 }
