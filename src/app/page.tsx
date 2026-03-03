@@ -66,6 +66,11 @@ export default async function Home() {
                 </p>
                 <h3 style={{ fontSize: '1.5rem', fontWeight: '900', fontStyle: 'italic', margin: 0 }}>{item.title}</h3>
               </div>
+              <div style={{ marginTop: '40px', textAlign: 'center' }}>
+                <Link href="/news" style={{ display: 'inline-block', backgroundColor: 'black', color: 'white', padding: '15px 30px', fontWeight: '900', textDecoration: 'none', border: '4px solid black' }}>
+                VIEW ALL NEWS →
+                </Link>
+              </div>
             </Link>
           ))}
         </div>
