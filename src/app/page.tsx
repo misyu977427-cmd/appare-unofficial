@@ -54,10 +54,12 @@ export default async function Home() {
         </Link>
       </section>
 
-      {/* NEWS SECTION */}
+     {/* NEWS SECTION */}
       <section id="news" style={{ backgroundColor: '#f3f4f6', padding: '100px 20px', borderTop: '6px solid black', borderBottom: '6px solid black' }}>
         <div style={{ maxWidth: '900px', margin: '0 auto' }}>
           <h2 style={{ fontSize: '3rem', fontWeight: '900', borderLeft: '10px solid black', paddingLeft: '20px', marginBottom: '60px', textTransform: 'uppercase' }}>Latest News</h2>
+          
+          {/* ✅ ここから記事のループ */}
           {newsData.contents.map((item) => (
             <Link href={`/news/${item.id}`} key={item.id} style={{ textDecoration: 'none', color: 'black' }}>
               <div style={{ borderBottom: '4px solid black', padding: '30px 0' }}>
@@ -66,13 +68,16 @@ export default async function Home() {
                 </p>
                 <h3 style={{ fontSize: '1.5rem', fontWeight: '900', fontStyle: 'italic', margin: 0 }}>{item.title}</h3>
               </div>
-              <div style={{ marginTop: '40px', textAlign: 'center' }}>
-                <Link href="/news" style={{ display: 'inline-block', backgroundColor: 'black', color: 'white', padding: '15px 30px', fontWeight: '900', textDecoration: 'none', border: '4px solid black' }}>
-                VIEW ALL NEWS →
-                </Link>
-              </div>
             </Link>
           ))}
+          {/* ✅ ループはここまで */}
+
+          {/* ✅ ボタンをループの外に配置 */}
+          <div style={{ marginTop: '60px', textAlign: 'center' }}>
+            <Link href="/news" style={{ display: 'inline-block', backgroundColor: 'black', color: 'white', padding: '15px 40px', fontWeight: '900', textDecoration: 'none', border: '4px solid black', boxShadow: '8px 8px 0px 0px #000' }}>
+              VIEW ALL NEWS →
+            </Link>
+          </div>
         </div>
       </section>
 
