@@ -2,7 +2,7 @@ import { client } from "@/lib/microcms";
 import Link from "next/link";
 
 export default async function NewsDetailPage({ params }: { params: { id: string } }) {
-  // ✅ 特定の記事をIDで取得
+  // ✅ 記事データを取得
   const item = await client.get({ endpoint: "news", contentId: params.id });
 
   return (
@@ -20,10 +20,10 @@ export default async function NewsDetailPage({ params }: { params: { id: string 
           {item.title}
         </h1>
         
-        {/* ✅ microCMSのリッチエディタの内容を表示 */}
+        {/* ✅ microCMSのリッチエディタの内容(HTML)を安全に表示 */}
         <div 
           style={{ lineHeight: '2', fontSize: '1.1rem', fontWeight: 'bold' }}
-          dangerouslySetInnerHTML={{ __html: item.content || item.body }} 
+          dangerouslySetInnerHTML={{ __html: item.content || "" }} 
         />
       </div>
     </main>
