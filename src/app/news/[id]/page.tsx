@@ -28,11 +28,6 @@ export default async function NewsDetailPage(props: { params: Promise<{ id: stri
           ← BACK TO NEWS LIST
         </Link>
         
-        {/* デバッグ用（表示されたら消してOK） */}
-        <div style={{ backgroundColor: '#ff0', padding: '10px', fontSize: '0.8rem', marginBottom: '20px', border: '2px solid black' }}>
-          DEBUG: ID={id} は正常に取得されました ✅
-        </div>
-
         <p style={{ color: '#6b7280', fontWeight: '900', marginBottom: '10px' }}>
           {new Date(item.publishedAt).toLocaleDateString('ja-JP').replace(/\//g, '.')}
         </p>
