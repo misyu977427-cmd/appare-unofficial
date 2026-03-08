@@ -4,22 +4,22 @@ import { client } from "@/lib/microcms";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 
-export default async function NewsDetailPage({ params }: { params: { id: string } }) {
+// ✅ params を Promise として受け取るように変更 (Next.js 15仕様)
+export default async function NewsDetailPage(props: { params: Promise<{ id: string }> }) {
+  const params = await props.params; // ✅ ここで await するのが最重要ポイント！
+  const id = params.id;
+
   let item;
-  
   try {
-    // ✅ microCMSからデータを取得
     item = await client.get({
       endpoint: "news",
-      contentId: params.id,
+      contentId: id,
     });
   } catch (error) {
-    console.error("Fetch error:", error);
-    return notFound(); // ⚠️ 取得失敗時は404へ飛ばしてクラッシュを防ぐ
+    return notFound();
   }
 
-  // ✅ itemが空の場合も404へ
-  if (!item) return notFound();
+  if (!item || !item.title) return notFound();
 
   return (
     <main style={{ backgroundColor: 'white', color: 'black', minHeight: '100vh', padding: '40px 20px', fontFamily: 'sans-serif' }}>
@@ -28,9 +28,9 @@ export default async function NewsDetailPage({ params }: { params: { id: string 
           ← BACK TO NEWS LIST
         </Link>
         
-        {/* --- デバッグエリア: 本番反映後に文字が出ていれば疎通成功 --- */}
+        {/* デバッグ用（表示されたら消してOK） */}
         <div style={{ backgroundColor: '#ff0', padding: '10px', fontSize: '0.8rem', marginBottom: '20px', border: '2px solid black' }}>
-          DEBUG: ID={params.id} / TITLE={item.title ? "OK" : "EMPTY"}
+          DEBUG: ID={id} は正常に取得されました ✅
         </div>
 
         <p style={{ color: '#6b7280', fontWeight: '900', marginBottom: '10px' }}>
@@ -42,14 +42,10 @@ export default async function NewsDetailPage({ params }: { params: { id: string 
         </h1>
         
         {/* ✅ microCMSのフィールドID 'content' を参照 */}
-        {item.content ? (
-          <div 
-            style={{ lineHeight: '2', fontSize: '1.1rem', fontWeight: 'bold' }}
-            dangerouslySetInnerHTML={{ __html: item.content }} 
-          />
-        ) : (
-          <p style={{ color: 'red' }}>⚠️ 'content' フィールドにデータがありません。</p>
-        )}
+        <div 
+          style={{ lineHeight: '2', fontSize: '1.1rem', fontWeight: 'bold' }}
+          dangerouslySetInnerHTML={{ __html: item.content || item.body }} 
+        />
       </div>
     </main>
   );
