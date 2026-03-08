@@ -26,11 +26,6 @@ export default async function MemberDetailPage(props: { params: Promise<{ id: st
       <Link href="/members" style={{ color: 'black', fontWeight: 'bold', textDecoration: 'underline', display: 'block', marginBottom: '40px' }}>
         ← BACK TO LIST
       </Link>
-      
-      {/* デバッグ用：確認できたら削除してOK */}
-      <div style={{ backgroundColor: '#ff0', padding: '10px', fontSize: '0.8rem', marginBottom: '20px', border: '2px solid black' }}>
-        DEBUG: MEMBER_ID={id} 連携成功 ✅
-      </div>
 
       <div style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'center' }}>
         <div style={{ border: '8px solid black', marginBottom: '40px' }}>
