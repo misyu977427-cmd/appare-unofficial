@@ -123,16 +123,15 @@ export default async function Home() {
     <p style={{ marginTop: '20px' }}>
       お問い合わせ・運営へのご連絡：
       <a 
-        href="https://x.com/your_account"  /* ⚠️ ここに作成した運営XのURLをいれてください */
+        href="https://x.com/hyper4771x" 
         target="_blank" 
         rel="noopener noreferrer" 
         style={{ color: 'black', textDecoration: 'underline', marginLeft: '5px' }}
       >
-        Appare! UNOFFICIAL 公式X
       </a>
     </p>
 
-    <p style={{ marginTop: '40px', textAlign: 'center', fontSize: '1.2rem' }}>© 2026 Appare! UNOFFICIAL</p>
+    <p style={{ marginTop: '40px', textAlign: 'center', fontSize: '1.2rem' }}>Appare!様 非公式ファンサイト</p>
   </div>
 </footer>
     </main>
