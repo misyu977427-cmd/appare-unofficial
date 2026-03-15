@@ -31,15 +31,15 @@ export default async function Home() {
             <img src={highResImageUrl} alt="Appare! 全員集合写真" style={{ width: '100%', height: 'auto', display: 'block' }} />
           )}
         </div>
-        <h2 style={{ fontSize: '2.5rem', fontWeight: '900', fontStyle: 'italic', marginBottom: '20px', textTransform: 'uppercase' }}>世界を明るく照らす、9色の光。</h2>
+        <h2 style={{ fontSize: '2.5rem', fontWeight: '900', fontStyle: 'italic', marginBottom: '20px', textTransform: 'uppercase' }}>大志を抱けよ yesアイドル</h2>
       </section>
 
       {/* ABOUT SECTION: 概要を追加 */}
       <section id="about" style={{ maxWidth: '900px', margin: '0 auto', padding: '80px 20px', borderBottom: '4px solid black' }}>
         <h2 style={{ fontSize: '2rem', fontWeight: '900', marginBottom: '20px' }}>当サイトの概要</h2>
         <p style={{ fontWeight: 'bold', lineHeight: '1.8' }}>
-          本サイトは、Appare!の活動をアーカイブし、その魅力をより多くのファンと共有することを目的とした非公式ファンサイトです。<br />
-          ライブレポート、メンバー紹介、最新ニュースなど、ファン目線での情報を集約しています。
+          本サイトは、9人組女性アイドルグループ Appare!の活動をアーカイブし、その魅力をより多くのファンと共有することを目的とした非公式ファンサイトです!<br />
+          ライブレポート、メンバー紹介、最新ニュースなど、ファン目線での情報を集約しています。現在、過去セトリ検索機能作成中！！
         </p>
       </section>
 
