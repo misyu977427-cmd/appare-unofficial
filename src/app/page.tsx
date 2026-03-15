@@ -34,14 +34,42 @@ export default async function Home() {
         <h2 style={{ fontSize: '2.5rem', fontWeight: '900', fontStyle: 'italic', marginBottom: '20px', textTransform: 'uppercase' }}>大志を抱けよ yesアイドル</h2>
       </section>
 
-      {/* ABOUT SECTION: 概要を追加 */}
-      <section id="about" style={{ maxWidth: '900px', margin: '0 auto', padding: '80px 20px', borderBottom: '4px solid black' }}>
-        <h2 style={{ fontSize: '2rem', fontWeight: '900', marginBottom: '20px' }}>当サイトの概要</h2>
-        <p style={{ fontWeight: 'bold', lineHeight: '1.8' }}>
-          本サイトは、9人組女性アイドルグループ Appare!の活動をアーカイブし、その魅力をより多くのファンと共有することを目的とした非公式ファンサイトです!<br />
-          ライブレポート、メンバー紹介、最新ニュースなど、ファン目線での情報を集約しています。現在、過去セトリ検索機能作成中！！
-        </p>
-      </section>
+      {/* ABOUT SECTION: 概要と公式リンクを追加 */}
+<section id="about" style={{ maxWidth: '900px', margin: '0 auto', padding: '80px 20px', borderBottom: '4px solid black' }}>
+  <h2 style={{ fontSize: '2rem', fontWeight: '900', marginBottom: '20px' }}>当サイトの概要</h2>
+  <p style={{ fontWeight: 'bold', lineHeight: '1.8', marginBottom: '30px' }}>
+    本サイトは、9人組女性アイドルグループ Appare!の活動をアーカイブし、その魅力をより多くのファンと共有することを目的とした非公式ファンサイトです!<br />
+    ライブレポート、メンバー紹介、最新ニュースなど、ファン目線での情報を集約しています。現在、過去セトリ検索機能作成中！！
+  </p>
+
+  {/* ✅ 公式リンク集を追加 */}
+  <div style={{ display: 'flex', gap: '15px', flexWrap: 'wrap' }}>
+    {[
+      { label: 'OFFICIAL HP', url: 'https://appare-official.jp/' },
+      { label: 'X (Twitter)', url: 'https://x.com/official_appare' },
+      { label: 'TikTok', url: 'https://www.tiktok.com/@official_appare' },
+      { label: 'Instagram', url: 'https://www.instagram.com/official_appare/' }
+    ].map((link) => (
+      <a 
+        key={link.label}
+        href={link.url} 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        style={{ 
+          backgroundColor: 'black', 
+          color: 'white', 
+          padding: '10px 20px', 
+          fontSize: '0.8rem', 
+          fontWeight: '900', 
+          textDecoration: 'none', 
+          border: '2px solid black' 
+        }}
+      >
+        {link.label} ↗
+      </a>
+    ))}
+  </div>
+</section>
 
       {/* MEMBERS SECTION */}
       <section id="members" style={{ maxWidth: '1200px', margin: '0 auto', padding: '100px 20px' }}>
@@ -81,18 +109,32 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* FOOTER: 著作権免責事項を追加 */}
-      <footer style={{ padding: '80px 20px', backgroundColor: 'white', borderTop: '10px solid black' }}>
-        <div style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'left', fontSize: '0.8rem', fontWeight: 'bold', lineHeight: '1.6' }}>
-          <p style={{ fontSize: '1.1rem', marginBottom: '15px' }}>【著作権について】</p>
-          <p>
-            当サイトは、ファンの皆様に楽しんでいただくことを目的としており、著作権や肖像権の侵害を意図したものではございません。 <br />
-            サイト内で使用されている画像・テキストなどの権利は、それぞれの著作権者様に帰属しております。 <br />
-            権利者様や関係者の方々にご迷惑をおかけしないよう細心の注意を払っておりますが、万が一問題がございましたら、権利者様ご本人からご連絡をいただければ迅速に対応させていただきます。
-          </p>
-          <p style={{ marginTop: '40px', textAlign: 'center', fontSize: '1.2rem' }}>© 2026 Appare! UNOFFICIAL</p>
-        </div>
-      </footer>
+      {/* FOOTER: 著作権免責事項と運営Xを追加 */}
+<footer style={{ padding: '80px 20px', backgroundColor: 'white', borderTop: '10px solid black' }}>
+  <div style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'left', fontSize: '0.8rem', fontWeight: 'bold', lineHeight: '1.6' }}>
+    <p style={{ fontSize: '1.1rem', marginBottom: '15px' }}>【著作権について】</p>
+    <p>
+      当サイトは、ファンの皆様に楽しんでいただくことを目的としており、著作権や肖像権の侵害を意図したものではございません。 <br />
+      サイト内で使用されている画像・テキストなどの権利は、それぞれの著作権者様に帰属しております。 <br />
+      権利者様や関係者の方々にご迷惑をおかけしないよう細心の注意を払っておりますが、万が一問題がございましたら、以下の公式Xよりご連絡をいただければ迅速に対応させていただきます。
+    </p>
+    
+    {/* ✅ 運営用Xへのリンクを追加 */}
+    <p style={{ marginTop: '20px' }}>
+      お問い合わせ・運営へのご連絡：
+      <a 
+        href="https://x.com/your_account"  /* ⚠️ ここに作成した運営XのURLをいれてください */
+        target="_blank" 
+        rel="noopener noreferrer" 
+        style={{ color: 'black', textDecoration: 'underline', marginLeft: '5px' }}
+      >
+        Appare! UNOFFICIAL 公式X
+      </a>
+    </p>
+
+    <p style={{ marginTop: '40px', textAlign: 'center', fontSize: '1.2rem' }}>© 2026 Appare! UNOFFICIAL</p>
+  </div>
+</footer>
     </main>
   );
 }
