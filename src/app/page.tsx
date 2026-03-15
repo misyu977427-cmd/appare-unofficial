@@ -48,7 +48,6 @@ export default async function Home() {
       { label: 'OFFICIAL HP', url: 'https://appare-official.jp/' },
       { label: 'X (Twitter)', url: 'https://x.com/official_appare' },
       { label: 'TikTok', url: 'https://www.tiktok.com/@official_appare' },
-      { label: 'Instagram', url: 'https://www.instagram.com/official_appare/' }
     ].map((link) => (
       <a 
         key={link.label}
