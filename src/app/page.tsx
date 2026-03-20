@@ -1,3 +1,4 @@
+// src/app/page.tsx 全体
 export const revalidate = 0;
 
 import { client } from "@/lib/microcms";
@@ -33,13 +34,17 @@ export default async function Home() {
         </div>
         <h2 style={{ fontSize: '2.5rem', fontWeight: '900', fontStyle: 'italic', marginBottom: '20px', textTransform: 'uppercase' }}>大志を抱けよ yesアイドル</h2>
         
-        {/* ✅ 修正：公式リンク集をここ（キャッチコピーの下）に移動 */}
+        {/* ✅ 要望：公式リンク集の上にタイトルを追加 */}
+        <h3 style={{ fontSize: '1.5rem', fontWeight: '900', fontStyle: 'italic', marginBottom: '20px', textTransform: 'uppercase' }}>OFFICIAL LINKS</h3>
+        
+        {/* 公式リンク集 */}
         <div style={{ display: 'flex', gap: '15px', flexWrap: 'wrap', justifyContent: 'center', marginTop: '30px' }}>
           {[
             { label: 'OFFICIAL HP', url: 'https://appare-official.jp/' },
             { label: 'X (Twitter)', url: 'https://x.com/official_appare' },
             { label: 'TikTok', url: 'https://www.tiktok.com/@official_appare' },
-            { label: 'Instagram', url: 'https://www.instagram.com/official_appare/' }
+            // ✅ トラブルシューティング：正しいInstagramのURLに差し替え
+            { label: 'Instagram', url: 'https://www.instagram.com/appare.official/?hl=ja' } 
           ].map((link) => (
             <a 
               key={link.label} href={link.url} target="_blank" rel="noopener noreferrer" 
@@ -49,6 +54,15 @@ export default async function Home() {
             </a>
           ))}
         </div>
+      </section>
+
+      {/* ABOUT SECTION: 概要 */}
+      <section id="about" style={{ maxWidth: '900px', margin: '0 auto', padding: '80px 20px', borderBottom: '4px solid black' }}>
+        <h2 style={{ fontSize: '2rem', fontWeight: '900', marginBottom: '20px' }}>当サイトの概要</h2>
+        <p style={{ fontWeight: 'bold', lineHeight: '1.8' }}>
+          本サイトは、9人組女性アイドルグループ Appare!の活動をアーカイブし、その魅力をより多くのファンと共有することを目的とした非公式ファンサイトです!<br />
+          ライブレポート、メンバー紹介、最新ニュースなど、ファン目線での情報を集約しています。現在、過去セトリ検索機能作成中！！
+        </p>
       </section>
 
       {/* MEMBERS SECTION */}
@@ -67,7 +81,6 @@ export default async function Home() {
         <div style={{ maxWidth: '900px', margin: '0 auto' }}>
           <h2 style={{ fontSize: '3rem', fontWeight: '900', borderLeft: '10px solid black', paddingLeft: '20px', marginBottom: '60px', textTransform: 'uppercase' }}>Latest News</h2>
           
-          {/* ✅ ここから記事のループ */}
           {newsData.contents.map((item) => (
             <Link href={`/news/${item.id}`} key={item.id} style={{ textDecoration: 'none', color: 'black' }}>
               <div style={{ borderBottom: '4px solid black', padding: '30px 0' }}>
@@ -78,9 +91,7 @@ export default async function Home() {
               </div>
             </Link>
           ))}
-          {/* ✅ ループはここまで */}
 
-          {/* ✅ ボタンをループの外に配置 */}
           <div style={{ marginTop: '60px', textAlign: 'center' }}>
             <Link href="/news" style={{ display: 'inline-block', backgroundColor: 'black', color: 'white', padding: '15px 40px', fontWeight: '900', textDecoration: 'none', border: '4px solid black', boxShadow: '8px 8px 0px 0px #000' }}>
               VIEW ALL NEWS →
@@ -90,34 +101,34 @@ export default async function Home() {
       </section>
 
       {/* FOOTER: 免責事項・著作権・運営Xリンク */}
-<footer style={{ padding: '80px 20px', backgroundColor: 'white', borderTop: '10px solid black' }}>
-  <div style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'left', fontSize: '0.8rem', fontWeight: 'bold', lineHeight: '1.6' }}>
-    <p style={{ fontSize: '1.1rem', marginBottom: '15px' }}>【免責事項・著作権について】</p>
-    <p>
-      当サイトは、ファンの皆様に楽しんでいただくことを目的とした非公式ファンサイトであり、運営元・所属事務所様とは一切関係ございません。<br />
-      可能な限り正確な情報を掲載するよう努めておりますが、誤った情報が入り込んだり、情報が古くなっている可能性がございます。<br />
-      サイト内で使用されている画像・テキストなどの権利は、それぞれの著作権者様に帰属しております。<br />
-      権利者様や関係者の方々にご迷惑をおかけしないよう細心の注意を払っておりますが、万が一問題がございましたら、以下の運営Xアカウントよりご連絡をいただければ迅速に対応させていただきます。
-    </p>
-    
-    {/* ✅ 運営用Xへのリンク：アカウント名を表示 */}
-    <p style={{ marginTop: '20px', fontSize: '0.9rem', backgroundColor: '#f3f4f6', padding: '15px', border: '2px solid black' }}>
-      お問い合わせ・運営へのご連絡：
-      <a 
-        href="https://x.com/hyper4771x）" 
-        target="_blank" 
-        rel="noopener noreferrer" 
-        style={{ color: 'black', textDecoration: 'underline', marginLeft: '5px', fontWeight: '900' }}
-      >
-        @Appare! 非公式ファンサイト@hyper4771x
-      </a>
-    </p>
+      <footer style={{ padding: '80px 20px', backgroundColor: 'white', borderTop: '10px solid black' }}>
+        <div style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'left', fontSize: '0.8rem', fontWeight: 'bold', lineHeight: '1.6' }}>
+          <p style={{ fontSize: '1.1rem', marginBottom: '15px' }}>【免責事項・著作権について】</p>
+          <p>
+            当サイトは、ファンの皆様に楽しんでいただくことを目的とした非公式ファンサイトであり、運営元・所属事務所様とは一切関係ございません。<br />
+            可能な限り正確な情報を掲載するよう努めておりますが、誤った情報が入り込んだり、情報が古くなっている可能性がございます。<br />
+            サイト内で使用されている画像・テキストなどの権利は、それぞれの著作権者様に帰属しております。<br />
+            権利者様や関係者の方々にご迷惑をおかけしないよう細心の注意を払っておりますが、万が一問題がございましたら、以下の運営Xアカウントよりご連絡をいただければ迅速に対応させていただきます。
+          </p>
+          
+          {/* ✅ トラブルシューティング：運営用Xへのリンク：正しいURLとテキストを設定 */}
+          <p style={{ marginTop: '20px', fontSize: '0.9rem', backgroundColor: '#f3f4f6', padding: '15px', border: '2px solid black' }}>
+            お問い合わせ・運営へのご連絡：
+            <a 
+              href="https://x.com/hyper4771x"  /* ✅ 正しいIDに書き換え */
+              target="_blank" 
+              rel="noopener noreferrer" 
+              style={{ color: 'black', textDecoration: 'underline', marginLeft: '5px', fontWeight: '900' }}
+            >
+              @Appare! UNOFFICIAL @hyper4771x ↗ /* ✅ 分かりやすいテキストに書き換え */
+            </a>
+          </p>
 
-    <p style={{ marginTop: '40px', textAlign: 'center', fontSize: '1.2rem', fontWeight: '900', fontStyle: 'italic' }}>
-      Appare! 非公式ファンサイト
-    </p>
-  </div>
-</footer>
+          <p style={{ marginTop: '40px', textAlign: 'center', fontSize: '1.2rem', fontWeight: '900', fontStyle: 'italic' }}>
+            Appare!様 非公式ファンサイト
+          </p>
+        </div>
+      </footer>
     </main>
   );
 }
