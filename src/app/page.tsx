@@ -107,7 +107,7 @@ export default async function Home() {
           <p>
             当サイトは、ファンの皆様に楽しんでいただくことを目的とした非公式ファンサイトであり、運営元・所属事務所様とは一切関係ございません。<br />
             可能な限り正確な情報を掲載するよう努めておりますが、誤った情報が入り込んだり、情報が古くなっている可能性がございます。<br />
-            サイト内で使用されている画像・テキストなどの権利は、それぞれの著作権者様に帰属しております。<br />
+            サイト内で使用されている画像・テキストなどの権利は、これらの画像は純粋な応援の目的のみに使用しており、それぞれの著作権者様に帰属しております。<br />
             権利者様や関係者の方々にご迷惑をおかけしないよう細心の注意を払っておりますが、万が一問題がございましたら、以下の運営Xアカウントよりご連絡をいただければ迅速に対応させていただきます。
           </p>
           
@@ -120,12 +120,12 @@ export default async function Home() {
               rel="noopener noreferrer" 
               style={{ color: 'black', textDecoration: 'underline', marginLeft: '5px', fontWeight: '900' }}
             >
-              @Appare! UNOFFICIAL @hyper4771x ↗ /* ✅ 分かりやすいテキストに書き換え */
+               @hyper4771x ↗ /* 当サイト管理人ｘアカウント */
             </a>
           </p>
 
           <p style={{ marginTop: '40px', textAlign: 'center', fontSize: '1.2rem', fontWeight: '900', fontStyle: 'italic' }}>
-            Appare!様 非公式ファンサイト
+           ©2026 Appare! 非公式ファンサイト
           </p>
         </div>
       </footer>
