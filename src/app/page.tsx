@@ -60,7 +60,7 @@ export default async function Home() {
       <section id="about" style={{ maxWidth: '900px', margin: '0 auto', padding: '80px 20px', borderBottom: '4px solid black' }}>
         <h2 style={{ fontSize: '2rem', fontWeight: '900', marginBottom: '20px' }}>当サイトの概要</h2>
         <p style={{ fontWeight: 'bold', lineHeight: '1.8' }}>
-          本サイトは、9人組女性アイドルグループ Appare!の活動をアーカイブし、その魅力をより多くのファンと共有することを目的とした非公式ファンサイトです!<br />
+          本サイトは、現在横浜アリーナでライブをすることを、目標にしている9人組女性アイドルグループ Appare!の活動をアーカイブし、その魅力をより多くのファンと共有することを目的とした非公式ファンサイトです!<br />
           ライブレポート、メンバー紹介、最新ニュースなど、ファン目線での情報を集約しています。現在、過去セトリ検索機能作成中！！
         </p>
       </section>
