@@ -6,7 +6,7 @@ import Link from "next/link";
 
 // ✅ params を Promise として受け取るように変更 (Next.js 15仕様)
 export default async function NewsDetailPage(props: { params: Promise<{ id: string }> }) {
-  const params = await props.params; // ✅ ここで await するのが最重要ポイント！
+  const params = await props.params; // 重要ポイント
   const id = params.id;
 
   let item;
