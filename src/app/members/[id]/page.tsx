@@ -29,8 +29,6 @@ export default async function MemberDetailPage(props: { params: Promise<{ id: st
   }
 
   if (!member) return notFound();
-
-  // ✅ メンバーカラーに対応するコードを取得（見つからない場合はグレー）
   const bannerColor = COLOR_MAP[member.color] || "#ccc";
 
   return (
@@ -40,7 +38,7 @@ export default async function MemberDetailPage(props: { params: Promise<{ id: st
       </Link>
       
       <div style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'center' }}>
-        {/* 大きな丸いアイコンエリア */}
+        {/* 丸いアイコン */}
         <div style={{ width: '250px', height: '250px', borderRadius: '50%', overflow: 'hidden', border: '8px solid black', margin: '0 auto 40px', backgroundColor: '#eee', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
           {member.image ? (
             <img src={member.image.url} alt={member.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
@@ -53,7 +51,7 @@ export default async function MemberDetailPage(props: { params: Promise<{ id: st
           {member.name}
         </h1>
         
-        {/* ✅ メンバーカラーのバナー（<div>で開き、<div>で閉じる） */}
+        {/* ✅ メンバーカラーのバナー*/}
         <div style={{ backgroundColor: bannerColor, color: bannerColor === "#ffffff" ? "black" : "white", padding: '15px 40px', fontWeight: '900', fontSize: '1.2rem', margin: '0 0 40px 0', display: 'inline-block', border: member.color === "白" ? "2px solid black" : "none" }}>
           COLOR: {member.color}
         </div>
@@ -62,7 +60,7 @@ export default async function MemberDetailPage(props: { params: Promise<{ id: st
         <div style={{ textAlign: 'left', border: '4px solid black', padding: '30px', fontWeight: 'bold', lineHeight: '2' }}>
           <div dangerouslySetInnerHTML={{ __html: member.content || "紹介文は未設定です。" }} />
         </div>
-      </div> {/* ✅ maxWidth の div を閉じるタグが画像では足りていませんでした */}
+      </div>
     </main>
   );
 }

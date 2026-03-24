@@ -103,17 +103,17 @@ export default async function Home() {
       {/* FOOTER: 免責事項・著作権・運営Xリンク */}
       <footer style={{ padding: '80px 20px', backgroundColor: 'white', borderTop: '10px solid black' }}>
         <div style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'left', fontSize: '0.8rem', fontWeight: 'bold', lineHeight: '1.6' }}>
-          <p style={{ fontSize: '1.1rem', marginBottom: '15px' }}>【免責事項・著作権について】</p>
+          <p style={{ fontSize: '1.1rem', marginBottom: '15px' }}>【著作権について】</p>
           <p>
             当サイトは、ファンの皆様に楽しんでいただくことを目的とした非公式ファンサイトであり、運営元・所属事務所様とは一切関係ございません。<br />
             可能な限り正確な情報を掲載するよう努めておりますが、誤った情報が入り込んだり、情報が古くなっている可能性がございます。<br />
-            サイト内で使用されている画像・テキストなどの権利は、これらの画像は純粋な応援の目的のみに使用しており、それぞれの著作権者様に帰属しております。<br />
+            当サイトで使用している画像・テキスト等の著作権および肖像権は、各権利所有者様に帰属いたします。これらは純粋な応援を目的として掲載しており、権利を侵害する意図はございません。<br />
             権利者様や関係者の方々にご迷惑をおかけしないよう細心の注意を払っておりますが、万が一問題がございましたら、以下の運営Xアカウントよりご連絡をいただければ迅速に対応させていただきます。
           </p>
           
-          {/* ✅ トラブルシューティング：運営用Xへのリンク：正しいURLとテキストを設定 */}
+          {/* Xへのリンク：URLとテキスト */}
           <p style={{ marginTop: '20px', fontSize: '0.9rem', backgroundColor: '#f3f4f6', padding: '15px', border: '2px solid black' }}>
-            お問い合わせ・運営へのご連絡：
+            お問い合わせ：
             <a 
               href="https://x.com/hyper4771x"  /* ✅ 正しいIDに書き換え */
               target="_blank" 
@@ -125,7 +125,7 @@ export default async function Home() {
           </p>
 
           <p style={{ marginTop: '40px', textAlign: 'center', fontSize: '1.2rem', fontWeight: '900', fontStyle: 'italic' }}>
-           ©2026 Appare! 非公式ファンサイト
+           Appare! 非公式ファンサイト
           </p>
         </div>
       </footer>

@@ -10,7 +10,7 @@ export default async function MembersPage() {
   return (
     <main style={{ backgroundColor: 'white', color: 'black', minHeight: '100vh', padding: '40px 20px', fontFamily: 'sans-serif' }}>
       
-      {/* ✅ 追加：TOPに戻るボタン（ナビゲーションの改善） */}
+      {/* ✅ 追加：TOPに戻るボタン */}
       <Link href="/" style={{ 
         color: 'black', 
         fontWeight: 'bold', 
